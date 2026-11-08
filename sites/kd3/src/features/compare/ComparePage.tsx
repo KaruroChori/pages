@@ -20,9 +20,9 @@ type Group = { group: string } | Row;
 const rows: Group[] = [
   { group: "Index and search" },
   { capability: "Static kd-tree", kd3: { text: "Yes", status: "yes" }, nano: { text: "Yes", status: "yes" } },
-  { capability: "Dynamic add/remove", kd3: { text: "No", status: "no" }, nano: { text: "Yes", status: "yes", tip: "KDTreeSingleIndexDynamicAdaptor" } },
-  { capability: "Incremental / self-balancing tree", kd3: { text: "No", status: "no" }, nano: { text: "Yes", status: "yes", tip: "KDTreeSingleIndexIncrementalAdaptor" } },
-  { capability: "Async / multi-threaded incremental variant", kd3: { text: "No", status: "no" }, nano: { text: "Yes", status: "yes", tip: "KDTreeSingleIndexIncrementalAdaptorMT" } },
+  { capability: "Dynamic add/remove", kd3: { text: "No", status: "no", tip: "Static by design. A small mutable wrapper around KdTreeView (see examples/mutable) adds insert/erase/kNN without changing the core index." }, nano: { text: "Yes", status: "yes", tip: "KDTreeSingleIndexDynamicAdaptor" } },
+  { capability: "Incremental / self-balancing tree", kd3: { text: "No", status: "no", tip: "Not built in. The same mutable wrapper can rebuild or maintain a delta tree; self-balancing is a wrapper policy, not a core feature." }, nano: { text: "Yes", status: "yes", tip: "KDTreeSingleIndexIncrementalAdaptor" } },
+  { capability: "Async / multi-threaded incremental variant", kd3: { text: "No", status: "no", tip: "No built-in async index. A wrapper can rebuild a new tree in the background and swap the view." }, nano: { text: "Yes", status: "yes", tip: "KDTreeSingleIndexIncrementalAdaptorMT" } },
   { capability: "Compile-time dimensionality", kd3: { text: "Yes", status: "yes", tip: "limits<Scalar, Dims, ...>" }, nano: { text: "Yes", status: "yes", tip: "DIM > 0" } },
   { capability: "Runtime dimensionality", kd3: { text: "No", status: "no" }, nano: { text: "Yes", status: "yes", tip: "DIM = -1" } },
   { capability: "1-NN", kd3: { text: "Yes", status: "yes" }, nano: { text: "Yes", status: "yes" } },
@@ -139,6 +139,21 @@ export function ComparePage() {
             nanoflann remains the broader library. nanoflann's parallel build
             is present, but a global lock limits scalability. The benchmark
             page lists every measured row.
+          </p>
+          <p className="compare-note">
+            kd3 is a static index. The repository includes a small
+            compaction-based mutable wrapper in{" "}
+            <a href="https://github.com/KaruroChori/kd3/tree/master/examples/mutable">
+              examples/mutable
+            </a>{" "}
+            with an optional delta tree and bulk creation. It adds
+            insert/erase/kNN around <code>KdTreeView</code> without changing
+            the core index. The{" "}
+            <a href="https://github.com/KaruroChori/kd3/blob/master/benchmarks/mutable.comparative.cpp">
+              mutable benchmark
+            </a>{" "}
+            validates it against nanoflann's dynamic adaptors. Dynamic support
+            is not built in, but the wrapper is deliberately small.
           </p>
         </div>
       </main>
