@@ -1,0 +1,19 @@
+{
+  "name": "@pages/ui",
+  "private": true,
+  "type": "module",
+  "exports": {
+    "./Document": "./Document.tsx",
+    "./Layout": "./Layout.tsx",
+    "./TopNav": "./TopNav.tsx",
+    "./SectionNav": "./SectionNav.tsx",
+    "./Hint": "./Hint.tsx",
+    "./CodeBlock": "./CodeBlock.tsx",
+    "./format": "./format.ts",
+    "./base.css": "./base.css"
+  },
+  "dependencies": {
+    "@kitajs/html": "4.2.13",
+    "prismjs": "1.30.0"
+  }
+}

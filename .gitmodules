@@ -1,0 +1,3 @@
+[submodule "sites/kd3/vendor/kd3"]
+	path = sites/kd3/vendor/kd3
+	url = git@github.com:KaruroChori/kd3.git

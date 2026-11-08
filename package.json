@@ -1,0 +1,22 @@
+{
+  "name": "pages",
+  "private": true,
+  "type": "module",
+  "workspaces": [
+    "packages/*",
+    "sites/*"
+  ],
+  "scripts": {
+    "build": "bun run build:kd3",
+    "build:kd3": "bun run --cwd sites/kd3 build",
+    "check:kd3": "bun run --cwd sites/kd3 check",
+    "deploy:kd3": "bun run --cwd sites/kd3 deploy",
+    "serve:kd3": "bun run --cwd sites/kd3 serve",
+    "update:kd3": "git submodule update --remote sites/kd3/vendor/kd3",
+    "clean": "rm -rf sites/*/dist sites/*/.build sites/*/.check"
+  },
+  "devDependencies": {
+    "@types/bun": "1.4.4",
+    "@types/prismjs": "1.26.6"
+  }
+}

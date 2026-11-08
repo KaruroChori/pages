@@ -1,0 +1,8 @@
+node_modules/
+dist/
+.check/
+.build/
+**/public/wasm/
+sites/*/src/data/*.json
+sites/*/native/build/
+sites/*/native/.xmake/

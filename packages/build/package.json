@@ -1,0 +1,12 @@
+{
+  "name": "@pages/build",
+  "private": true,
+  "type": "module",
+  "exports": {
+    ".": "./src/index.ts"
+  },
+  "dependencies": {
+    "@pages/ui": "workspace:*",
+    "gh-pages": "6.3.0"
+  }
+}

@@ -1,0 +1,21 @@
+{
+  "name": "@pages/kd3",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "bun run build && bun run serve",
+    "build": "bun run build:data && bun run build:wasm && bun run build:site",
+    "build:data": "bun run scripts/build-benchmarks.ts",
+    "build:wasm": "bun run scripts/build-wasm.ts",
+    "build:site": "bun run scripts/build-site.ts",
+    "check": "bun run build:data && bun run scripts/build-site.ts && bun build --check --outdir=.check ./.build/pages/index.html ./.build/pages/benchmarks.html ./.build/pages/compare.html",
+    "serve": "bun run scripts/serve-site.ts",
+    "deploy": "bun run build && bun run scripts/deploy-site.ts",
+    "clean": "rm -rf dist .check .build"
+  },
+  "dependencies": {
+    "@kitajs/html": "4.2.13",
+    "@pages/build": "workspace:*",
+    "@pages/ui": "workspace:*"
+  }
+}

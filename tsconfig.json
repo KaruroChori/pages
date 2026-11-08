@@ -1,0 +1,47 @@
+{
+  "compilerOptions": {
+    "target": "ES2022",
+    "lib": [
+      "DOM",
+      "DOM.Iterable",
+      "ES2022"
+    ],
+    "module": "Preserve",
+    "moduleResolution": "Bundler",
+    "jsx": "react-jsx",
+    "jsxImportSource": "@kitajs/html",
+    "strict": true,
+    "noUncheckedIndexedAccess": true,
+    "resolveJsonModule": true,
+    "esModuleInterop": true,
+    "skipLibCheck": true,
+    "noEmit": true,
+    "types": [
+      "bun"
+    ],
+    "moduleDetection": "force",
+    "allowJs": true,
+    "paths": {
+      "@pages/ui/*": [
+        "./packages/ui/*"
+      ],
+      "@pages/build": [
+        "./packages/build/src/index.ts"
+      ],
+      "@pages/build/*": [
+        "./packages/build/src/*"
+      ]
+    }
+  },
+  "include": [
+    "packages",
+    "sites"
+  ],
+  "exclude": [
+    "**/node_modules",
+    "**/vendor",
+    "**/dist",
+    "**/.build",
+    "**/.check"
+  ]
+}
